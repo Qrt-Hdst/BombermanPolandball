@@ -1,5 +1,5 @@
 const cvs = document.getElementById('snake');
-const ctx = cvs.getContext("2d"); 
+const ctx = cvs.getContext("2d");
 
 const box = 32;//sparsowac z  pliku config w przyszlosci
 
@@ -42,28 +42,28 @@ let polandball = [];
 
 
 polandball = {
-		x : 10 * box, //position x 
-		y : 10 * box, //position y
+    x: 10 * box, //position x 
+    y: 10 * box, //position y
 };
 
 //create the heart 
 
 let heart = {
-	x : Math.floor(Math.random()*18+1) * box, //position x 
-	y : Math.floor(Math.random()*18+1) * box  //position y 
+    x: Math.floor(Math.random() * 18 + 1) * box, //position x 
+    y: Math.floor(Math.random() * 18 + 1) * box  //position y 
 }
 
 //create enemy
 
 let enemy = {
-	x : Math.floor(Math.random()*18+1) * box, //position x 
-	y : Math.floor(Math.random()*18+1) * box  //position y 
+    x: Math.floor(Math.random() * 18 + 1) * box, //position x 
+    y: Math.floor(Math.random() * 18 + 1) * box  //position y 
 }
 
 
 //create the score var
 
-let score = 0 
+let score = 0
 
 
 //zmienna przechowujaca numer klawisza
@@ -73,23 +73,23 @@ let d = 0;
 
 // hmm , keydown to chodzi o  naciśnienie klawisza, keyup to wydarzenie zwolnienia klawisza
 //
-document.addEventListener("keydown",direction);
+document.addEventListener("keydown", direction);
 
-function direction(event){
-	let key = event.keyCode;
-	if( key == 37 && d != "RIGHT"){
-		d = "LEFT";
-		left.play(); //odpala muzyke
-	}else if( key == 38 && d != "DOWN"){
-		d = "UP"; 
-		up.play(); //odpala muzyke
-	}else if( key == 39 && d != "LEFT" ){
-		d = "RIGHT"; 
-		right.play(); //odpala muzyke
-	}else if(key == 40 && d != "UP"){
-		d = "DOWN";
-		down.play();  //odpala muzyke
-	}
+function direction(event) {
+    let key = event.keyCode;
+    if (key == 37 && d != "RIGHT") {
+        d = "LEFT";
+        left.play(); //odpala muzyke
+    } else if (key == 38 && d != "DOWN") {
+        d = "UP";
+        up.play(); //odpala muzyke
+    } else if (key == 39 && d != "LEFT") {
+        d = "RIGHT";
+        right.play(); //odpala muzyke
+    } else if (key == 40 && d != "UP") {
+        d = "DOWN";
+        down.play();  //odpala muzyke
+    }
 }
 
 
