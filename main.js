@@ -3,7 +3,14 @@ const ctx = cvs.getContext("2d");
 
 const box = 32;
 
-const ground = new Image();
+const imgGround = new Image();
+
+imgGround.src = "img/Nothing.png";
+
+const enemyImg = new Image();
+
+enemyImg.src = "img/NaziBall.png";
+
 
 
 
