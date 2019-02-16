@@ -5,6 +5,12 @@ const box = 32;
 
 const ground = new Image();
 
+ground.src = "img/Nothing.png";
+
+const imgGround = new Image();
+
+imgGround.src = "img/Nothing.png";
+
 
 
 let dead = new Audio();
