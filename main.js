@@ -1,11 +1,13 @@
-const cvs = document.getElementById('polandBall');
-const ctx = cvs.getContext("2d");
+const cvs = document.getElementById("polandBall");
+const ctx = cvs.getContext('2d');
 
 const box = 32;//sparsowac z  pliku config w przyszlosci
 
 const imgGround = new Image();
 
 imgGround.src = "img/Nothing.png";
+imgGround.height = 20;
+imgGround.width = "10px";
 
 const enemyImg = new Image();
 
@@ -91,29 +93,41 @@ function direction(event) {
 }
 
 function draw() {
-    // ctx.drawImage(imgGround, 0, 0);
+
+    ctx.drawImage(imgGround, 0, 0, 20, 20);
+
+    ctx.drawImage(enemyImg, 10, 50, 100, 100);
+    ctx.drawImage(heartImg, 120, 20, 100, 100);
+    //Olde head osition
+
+    let polanballX = polandball.x;
+
+    let polanballY = polandball.y;
+
+    // which direction
+
+    if (d == "LEFT") polandballX -= box;
+    if (d == "UP") polandballY -= box;
+    if (d == "RIGHT") polandballX += box;
+    if (d == "DOWN") polandballY += box;
+
+
+
 
 
     ctx.fillStyle = "red";
     ctx.fillRect(polandball.x, polandball.y, box, box);
     ctx.strokeStyle = "red";
-    ctx.strokeRect(polandball.x, polandball.y);
+    ctx.strokeRect(polandball.x, polandball.y, box, box);
+
+
+
+
 }
-ctx.drawImage(enemyImg, enemy.x, enemy.y);
+
+let game = setInterval(draw, 100);
 
 
-//Olde head osition
-
-let polanballX = polanball.x;
-
-let polanballY = polanball.x;
-
-// which direction
-
-if (d == "LEFT") polanballX -= box;
-if (d == "UP") polanballY -= box;
-if (d == "RIGHT") polanballX += box;
-if (d == "DOWN") polanballY += box;
 
 
 
@@ -128,6 +142,5 @@ function collision(polandball, enemy) {
 
 // call draw function every 100 ms - funkcja odświeżająca co 100ms
 
-let game = setInterval(draw, 100);
 
 
