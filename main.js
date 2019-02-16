@@ -66,17 +66,17 @@ let enemy = {
 let score = 0 
 
 
-//zmienna przechowujaca numer klawisza
-
+//zmienna przechowujaca numer klawisza, 
 let d = 0;
 //
 
 // hmm , keydown to chodzi o  naciśnienie klawisza, keyup to wydarzenie zwolnienia klawisza
-//
+//direction to metoda poniżej opisana
 document.addEventListener("keydown",direction);
 
 function direction(event){
 	let key = event.keyCode;
+	//warto zauważyć że d przechowuje przy sprawdzaniu warunku poprzednią wartość
 	if( key == 37 && d != "RIGHT"){
 		d = "LEFT";
 		left.play(); //odpala muzyke
@@ -92,6 +92,11 @@ function direction(event){
 	}
 }
 
+
+// checkCollision
+function collision(head, arrray){
+	
+}
 
 
 
