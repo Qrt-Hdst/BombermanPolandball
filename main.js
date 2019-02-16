@@ -94,10 +94,15 @@ function direction(event){
 
 
 // checkCollision
-function collision(head, arrray){
-	
+function collision(polandball, enemy){
+	if(polandball.x == enemy.x && polandball.y == enemy.y){
+		return true;
+	} 
+	return false;
 }
 
+// call draw function every 100 ms - funkcja odświeżająca co 100ms
 
+let game = setInterval(draw,100);
 
 
