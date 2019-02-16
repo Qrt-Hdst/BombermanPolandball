@@ -12,11 +12,6 @@ const enemyImg = new Image();
 enemyImg.src = "img/NaziBall.png";
 
 
-ground.src = "img/Nothing.png";
-
-const imgGround = new Image();
-
-imgGround.src = "img/Nothing.png";
 
 
 
@@ -91,6 +86,18 @@ function direction(event) {
         down.play();  //odpala muzyke
     }
 }
+
+function draw() {
+    ctx.drawImage(imgGround, 0, 0);
+
+    for (let i = 0; polandball.length; i++) {
+        ctx.fillStyle = "red"(i == 0) ? "green" : "white";
+        ctx.fillRect(polandball[i].x, polandball[i].y, box, box);
+        ctx.strokeStyle = "red";
+        ctx.strokeRect(polandball[i].x, polandball[i].y);
+    }
+}
+ctx.drawImage(enemyImg, enemy.x, enemy.y);
 
 
 
