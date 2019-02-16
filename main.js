@@ -1,4 +1,4 @@
-const cvs = document.getElementById('snake');
+const cvs = document.getElementById('polandBall');
 const ctx = cvs.getContext("2d");
 
 const box = 32;//sparsowac z  pliku config w przyszlosci
@@ -10,6 +10,11 @@ imgGround.src = "img/Nothing.png";
 const enemyImg = new Image();
 
 enemyImg.src = "img/NaziBall.png";
+
+
+const heartImg = new Image();
+
+heartImg.src = "img/Heart.png";
 
 
 
@@ -33,10 +38,9 @@ down.src = "audio/down.mp3";
 
 //create a polanball
 
-let polandball = [];
 
 
-polandball = {
+let polandball = {
     x: 10 * box, //position x 
     y: 10 * box, //position y
 };
@@ -66,27 +70,6 @@ let d = 0;
 //
 
 // hmm , keydown to chodzi o  naciśnienie klawisza, keyup to wydarzenie zwolnienia klawisza
-<<<<<<< HEAD
-//direction to metoda poniżej opisana
-document.addEventListener("keydown",direction);
-
-function direction(event){
-	let key = event.keyCode;
-	//warto zauważyć że d przechowuje przy sprawdzaniu warunku poprzednią wartość
-	if( key == 37 && d != "RIGHT"){
-		d = "LEFT";
-		left.play(); //odpala muzyke
-	}else if( key == 38 && d != "DOWN"){
-		d = "UP"; 
-		up.play(); //odpala muzyke
-	}else if( key == 39 && d != "LEFT" ){
-		d = "RIGHT"; 
-		right.play(); //odpala muzyke
-	}else if(key == 40 && d != "UP"){
-		d = "DOWN";
-		down.play();  //odpala muzyke
-	}
-=======
 //
 document.addEventListener("keydown", direction);
 
@@ -108,29 +91,43 @@ function direction(event) {
 }
 
 function draw() {
-    ctx.drawImage(imgGround, 0, 0);
+    // ctx.drawImage(imgGround, 0, 0);
 
-    for (let i = 0; polandball.length; i++) {
-        ctx.fillStyle = "red"(i == 0) ? "green" : "white";
-        ctx.fillRect(polandball[i].x, polandball[i].y, box, box);
-        ctx.strokeStyle = "red";
-        ctx.strokeRect(polandball[i].x, polandball[i].y);
-    }
->>>>>>> orel
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(polandball.x, polandball.y, box, box);
+    ctx.strokeStyle = "red";
+    ctx.strokeRect(polandball.x, polandball.y);
 }
 ctx.drawImage(enemyImg, enemy.x, enemy.y);
 
 
+//Olde head osition
+
+let polanballX = polanball.x;
+
+let polanballY = polanball.x;
+
+// which direction
+
+if (d == "LEFT") polanballX -= box;
+if (d == "UP") polanballY -= box;
+if (d == "RIGHT") polanballX += box;
+if (d == "DOWN") polanballY += box;
+
+
+
+
 // checkCollision
-function collision(polandball, enemy){
-	if(polandball.x == enemy.x && polandball.y == enemy.y){
-		return true;
-	} 
-	return false;
+function collision(polandball, enemy) {
+    if (polandball.x == enemy.x && polandball.y == enemy.y) {
+        return true;
+    }
+    return false;
 }
 
 // call draw function every 100 ms - funkcja odświeżająca co 100ms
 
-let game = setInterval(draw,100);
+let game = setInterval(draw, 100);
 
 
