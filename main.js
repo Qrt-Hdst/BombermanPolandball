@@ -100,15 +100,21 @@ function draw() {
     ctx.drawImage(polandballImg, polandball.x, polandball.y, box, box);
     //Olde head osition
 
-    if (d == "LEFT") polandball.x -= box;
-    if (d == "UP") polandball.y -= box;
-    if (d == "RIGHT") polandball.x += box;
-    if (d == "DOWN") polandball.y += box;
+
+    let touchwall = false;
+
+    if (polandball.x < box + 1 || polandball.x > 17 * box - 1 || polandball.y < 3 * box + 1 || polandball.y > 17 * box - 1) {
+        // clearInterval(game);
+        // dead.play();
+        touchwall = true;
+    }
+    if (touchwall == false) {
 
 
-    if (polandball.x < box || polandball.x > 17 * box || polandball.y < 3 * box || polandball.y > 17 * box) {
-        clearInterval(game);
-        dead.play();
+        if (d == "LEFT") polandball.x -= box;
+        if (d == "UP") polandball.y -= box;
+        if (d == "RIGHT") polandball.x += box;
+        if (d == "DOWN") polandball.y += box;
     }
     ctx.fillStyle = "white";
     ctx.font = "45px Changa one";
