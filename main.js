@@ -19,7 +19,7 @@ heartImg.src = "img/food.png";
 
 const polandballPicture = new Image();
 
-polandbal.src ="img/Polandball.png"
+polandball.src ="img/Polandball.png"
 
 // load audio files
 
@@ -97,6 +97,7 @@ function draw() {
 
     ctx.drawImage(enemyImg, 10, 50, box, box);
     ctx.drawImage(heartImg, 120, 20, box, box);
+    ctx.drawImage(polandballPicture,polandball.x,polandball.y,box,box);
     //Olde head osition
 
     //let polanballX = polandball.x;
