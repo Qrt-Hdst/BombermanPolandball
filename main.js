@@ -1,13 +1,11 @@
 const cvs = document.getElementById("polandBall");
 const ctx = cvs.getContext('2d');
 
-const box = 32;//sparsowac z  pliku config w przyszlosci
+const box = 10;//sparsowac z  pliku config w przyszlosci
 
 const imgGround = new Image();
 
 imgGround.src = "img/Nothing.png";
-imgGround.height = 20;
-imgGround.width = "10px";
 
 const enemyImg = new Image();
 
@@ -93,11 +91,11 @@ function direction(event) {
 }
 
 function draw() {
+	//ctx.drawImage(image, dx, dy, dWidth, dHeight);
+    ctx.drawImage(imgGround, 0, 0, box, box);
 
-    ctx.drawImage(imgGround, 0, 0, 20, 20);
-
-    ctx.drawImage(enemyImg, 10, 50, 100, 100);
-    ctx.drawImage(heartImg, 120, 20, 100, 100);
+    ctx.drawImage(enemyImg, 10, 50, box, box);
+    ctx.drawImage(heartImg, 120, 20, box, box);
     //Olde head osition
 
     let polanballX = polandball.x;
