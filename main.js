@@ -1,9 +1,9 @@
-const cvs = document.getElementById("polandBall");
+const cvs = document.getElementById("Bomberman");
 const ctx = cvs.getContext('2d');
 
-const box = 10;//sparsowac z  pliku config w przyszlosci
+const box = 32;//sparsowac z  pliku config w przyszlosci
 
-const imgGround = new Image();
+const groundImg = new Image();
 
 imgGround.src = "img/ground.png";
 
@@ -15,9 +15,9 @@ enemyImg.src = "img/NaziBall.png";
 
 const heartImg = new Image();
 
-heartImg.src = "img/food.png";
+heartImg.src = "img/Heart.png";
 
-const polandballPicture = new Image();
+const polandballImg = new Image();
 
 polandball.src ="img/Polandball.png"
 
@@ -93,39 +93,26 @@ function direction(event) {
 
 function draw() {
 	//ctx.drawImage(image, dx, dy, dWidth, dHeight);
-    ctx.drawImage(imgGround, 0, 0, box, box);
+    ctx.drawImage(groundImg, 0, 0, box, box);
 
-    ctx.drawImage(enemyImg, 10, 50, box, box);
+    //ctx.drawImage(enemyImg, 10, 50, box, box);
     ctx.drawImage(heartImg, 120, 20, box, box);
-    ctx.drawImage(polandballPicture,polandball.x,polandball.y,box,box);
+    ctx.drawImage(polandballImg,polandball.x,polandball.y,box,box);
     //Olde head osition
-
-    //let polanballX = polandball.x;
-
-    //let polanballY = polandball.y;
-
-    if(polandball.x < box || polandball.x > 17 * box || polandball.y < 3*box || polandball.y > 17*box ){
-        clearInterval(game);
-        dead.play();
-    }
-
-    // which direction
 
     if (d == "LEFT") polandball.x -= box;
     if (d == "UP") polandball.y -= box;
     if (d == "RIGHT") polandball.x += box;
     if (d == "DOWN") polandball.y += box;
 
-        /*ctx.fillStyle = "red";
-        ctx.fillRect(polandball.x, polandball.y, box, box);
-        ctx.strokeStyle = "red";
-        ctx.strokeRect(polandball.x, polandball.y, box, box);
-    */
 
-
-
-
-
+    if(polandball.x < box || polandball.x > 17 * box || polandball.y < 3*box || polandball.y > 17*box ){
+        clearInterval(game);
+        dead.play();
+    }
+    ctx.fillStyle = "white";
+    ctx.font = "45px Changa one";
+    ctx.fillText(score,2*box,1.6*box);
 }
 
 let game = setInterval(draw, 100);
@@ -134,7 +121,7 @@ let game = setInterval(draw, 100);
 
 
 
-
+/*
 // checkCollision
 function collision(polandball, enemy) {
     if (polandball.x == enemy.x && polandball.y == enemy.y) {
@@ -142,6 +129,7 @@ function collision(polandball, enemy) {
     }
     return false;
 }
+*/
 
 // call draw function every 100 ms - funkcja odświeżająca co 100ms
 
