@@ -5,20 +5,23 @@ const box = 10;//sparsowac z  pliku config w przyszlosci
 
 const imgGround = new Image();
 
-imgGround.src = "img/Nothing.png";
+imgGround.src = "img/ground.png";
 
+/*
 const enemyImg = new Image();
 
 enemyImg.src = "img/NaziBall.png";
-
+*/
 
 const heartImg = new Image();
 
-heartImg.src = "img/Heart.png";
+heartImg.src = "img/food.png";
 
+const polandballPicture = new Image();
 
+polandbal.src ="img/Polandball.png"
 
-
+// load audio files
 
 let dead = new Audio();
 let eat = new Audio();
@@ -39,17 +42,17 @@ down.src = "audio/down.mp3";
 //create a polanball
 
 
-
+//wartości początkowe pozycji
 let polandball = {
-    x: 10 * box, //position x 
+    x: 9 * box, //position x 
     y: 10 * box, //position y
 };
 
 //create the heart 
 
 let heart = {
-    x: Math.floor(Math.random() * 18 + 1) * box, //position x 
-    y: Math.floor(Math.random() * 18 + 1) * box  //position y 
+    x: Math.floor( Math.random() * 18 + 1) * box, //position x 
+    y: Math.floor( Math.random() * 18 + 1) * box  //position y 
 }
 
 //create enemy
@@ -67,10 +70,8 @@ let score = 0
 
 //zmienna przechowujaca numer klawisza, 
 let d = 0;
-//
 
 // hmm , keydown to chodzi o  naciśnienie klawisza, keyup to wydarzenie zwolnienia klawisza
-//
 document.addEventListener("keydown", direction);
 
 function direction(event) {
@@ -98,25 +99,28 @@ function draw() {
     ctx.drawImage(heartImg, 120, 20, box, box);
     //Olde head osition
 
-    let polanballX = polandball.x;
+    //let polanballX = polandball.x;
 
-    let polanballY = polandball.y;
+    //let polanballY = polandball.y;
+
+    if(polandball.x < box || polandball.x > 17 * box || polandball.y < 3*box || polandball.y > 17*box ){
+        clearInterval(game);
+        dead.play();
+    }
 
     // which direction
 
-    if (d == "LEFT") polandballX -= box;
-    if (d == "UP") polandballY -= box;
-    if (d == "RIGHT") polandballX += box;
-    if (d == "DOWN") polandballY += box;
+    if (d == "LEFT") polandball.x -= box;
+    if (d == "UP") polandball.y -= box;
+    if (d == "RIGHT") polandball.x += box;
+    if (d == "DOWN") polandball.y += box;
 
+        /*ctx.fillStyle = "red";
+        ctx.fillRect(polandball.x, polandball.y, box, box);
+        ctx.strokeStyle = "red";
+        ctx.strokeRect(polandball.x, polandball.y, box, box);
+    */
 
-
-
-
-    ctx.fillStyle = "red";
-    ctx.fillRect(polandball.x, polandball.y, box, box);
-    ctx.strokeStyle = "red";
-    ctx.strokeRect(polandball.x, polandball.y, box, box);
 
 
 
