@@ -101,27 +101,42 @@ function draw() {
     //Olde head osition
 
 
-    let touchwall = false;
-
-    if (polandball.x < box + 1 || polandball.x > 17 * box - 1 || polandball.y < 3 * box + 1 || polandball.y > 17 * box - 1) {
-        // clearInterval(game);
-        // dead.play();
-        touchwall = true;
+    let touchwallLeft = false;
+    let touchwallRight = false;
+    let touchwallUp = false;
+    let touchwallDown = false;
+    if (polandball.x < box + 1 ){
+        touchwallLeft = true;
+        polandball.x = box;
     }
-    if (touchwall == false) {
-
-
-        if (d == "LEFT") polandball.x -= box;
-        if (d == "UP") polandball.y -= box;
-        if (d == "RIGHT") polandball.x += box;
-        if (d == "DOWN") polandball.y += box;
+    if (polandball.x > 17 * box - 1  ){
+        touchwallRight = true;
+        polandball.x =  17 * box;
     }
+    if (polandball.y < 3 * box + 1){
+        touchwallLUp = true;
+        polandball.y=3 * box;
+    }
+    if (polandball.y > 17 * box - 1 ){
+        touchwallDown = true;
+        polandball.y=17 * box;
+    }
+
+    if (d == "LEFT" && !touchwallLeft) polandball.x -= box;
+    if (d == "UP" && !touchwallUp) polandball.y -= box;
+    if (d == "RIGHT" && !touchwallRight) polandball.x += box;
+    if (d == "DOWN" && !touchwallDown) polandball.y += box;
+
+    console.log(polandball.x);
+    console.log(polandball.y);
+    console.log("polandball.y > 3*box+1  = " + (polandball.y < 3 * box + 1))
+    console.log("touchwallLUp = " + touchwallLUp)
     ctx.fillStyle = "white";
     ctx.font = "45px Changa one";
     ctx.fillText(score, 2 * box, 1.6 * box);
 }
 
-let game = setInterval(draw, 100);
+let game = setInterval(draw, 200);
 
 
 
