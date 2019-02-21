@@ -5,7 +5,7 @@ const box = 32;//sparsowac z  pliku config w przyszlosci
 
 const groundImg = new Image();
 
-imgGround.src = "img/ground.png";
+groundImg.src = "img/ground.png";
 
 /*
 const enemyImg = new Image();
@@ -19,7 +19,7 @@ heartImg.src = "img/Heart.png";
 
 const polandballImg = new Image();
 
-polandball.src ="img/Polandball.png"
+polandballImg.src = "img/Polandball.png"
 
 // load audio files
 
@@ -51,8 +51,8 @@ let polandball = {
 //create the heart 
 
 let heart = {
-    x: Math.floor( Math.random() * 18 + 1) * box, //position x 
-    y: Math.floor( Math.random() * 18 + 1) * box  //position y 
+    x: Math.floor(Math.random() * 18 + 1) * box, //position x 
+    y: Math.floor(Math.random() * 18 + 1) * box  //position y 
 }
 
 //create enemy
@@ -92,12 +92,12 @@ function direction(event) {
 }
 
 function draw() {
-	//ctx.drawImage(image, dx, dy, dWidth, dHeight);
-    ctx.drawImage(groundImg, 0, 0, box, box);
+    //ctx.drawImage(image, dx, dy, dWidth, dHeight);
+    ctx.drawImage(groundImg, 0, 0);
 
     //ctx.drawImage(enemyImg, 10, 50, box, box);
     ctx.drawImage(heartImg, 120, 20, box, box);
-    ctx.drawImage(polandballImg,polandball.x,polandball.y,box,box);
+    ctx.drawImage(polandballImg, polandball.x, polandball.y, box, box);
     //Olde head osition
 
     if (d == "LEFT") polandball.x -= box;
@@ -106,13 +106,13 @@ function draw() {
     if (d == "DOWN") polandball.y += box;
 
 
-    if(polandball.x < box || polandball.x > 17 * box || polandball.y < 3*box || polandball.y > 17*box ){
+    if (polandball.x < box || polandball.x > 17 * box || polandball.y < 3 * box || polandball.y > 17 * box) {
         clearInterval(game);
         dead.play();
     }
     ctx.fillStyle = "white";
     ctx.font = "45px Changa one";
-    ctx.fillText(score,2*box,1.6*box);
+    ctx.fillText(score, 2 * box, 1.6 * box);
 }
 
 let game = setInterval(draw, 100);
